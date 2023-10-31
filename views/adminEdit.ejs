@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <h4>Add a new student</h4>
+    <form method = "post" action = "/nsut/admin/show/students">
+        <input placeholder="Enter Student's Roll no" name="rollno">
+        <input placeholder="Enter firstname" name="fname">
+        <input placeholder="Enter lastname" name="lname">
+        <input placeholder="Enter email id" name="email">
+        <input placeholder="Enter gender" name="gender">
+        <br>
+        <input placeholder="Enter address" name="address">
+
+        <input placeholder="Enter ContactNumber" name="number1">
+        <input placeholder="Enter ContactNumber" name="number2">
+        <br>
+        <button>Submit Post</button>
+    </form>
+    <h4>Edit Detail of existing student</h4>
+    <form method="post" action="">
+        <input placeholder="Enter Student's Roll no" name="rollno">
+        <button>Submit</button>
+    </form>
+    <h4>Delete a existing student</h4>
+    <form method="delete" action="">
+        <input placeholder="Enter Student's Roll no" name="rollno">
+        <button>Submit</button>
+    </form>
+    <h4>Add a new staff member</h4>
+    <form method = "post" action = "/nsut/admin/show/staff">
+        <input placeholder="Enter StaffId" name="id">
+        <input placeholder="Enter name" name="name">
+        
+        <input placeholder="Enter email id" name="email">
+        
+        <br>
+        <input placeholder="Enter ContactNumber" name="number1">
+        <input placeholder="Enter ContactNumber" name="number2">
+        <br>
+        <button>Submit Post</button>
+    </form>
+    <h4>Edit Detail of existing staff</h4>
+    <form method="post" action="">
+        <input placeholder="Enter Staff id" name="id">
+        <button>Submit</button>
+    </form>
+    <h4>Delete a existing student</h4>
+    <form method="delete" action="">
+        <input placeholder="Enter staff id" name="id">
+        <button>Submit</button>
+    </form>
+    
+</body>
+</html>
