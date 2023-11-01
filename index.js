@@ -15,8 +15,8 @@ app.use(express.urlencoded({extended:true}));
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'myFirm',
-    password:"sans"
+    database: 'hostel',
+    password:"saneh@0310"
   });
 app.get("/nsut/admin",(req,res)=>{
     res.render("adminLogin.ejs");
@@ -54,9 +54,30 @@ app.post("/nsut/admin/show",(req,res)=>{
     }
     console.log("Admin details showing");
 })
+app.post("/nsut/admin/show/edit",(req,res)=>{
+    res.render("adminEdit.ejs");
+
+})
+app.get("/nsut/admin/show/student",(req,res)=>{
+    res.render("StudentData.ejs");
+})
+app.get("/nsut/admin/show/staff",(req,res)=>{
+    res.render("StaffData.ejs");
+})
 app.get("/",(req,res)=>{
     console.log("root working");
     res.render("home.ejs");
+})
+app.get("/nsut/admin/show/edit/:id",(req,res)=>{
+    let {id} = req.params;
+    console.log(id);
+    let post = posts.find((p) => id===p.id);
+    res.render("edit.ejs",{post});
+});
+app.delete("/nsut/admin/show/edit/:id",(req,res)=>{
+    let {id} = req.params;
+    posts = posts.filter((p)=>id!==p.id);
+    res.redirect("/nsut/admin/show/student");
 })
 app.listen("8080",(req,res)=>{
     console.log("server is listening to port 8080");
