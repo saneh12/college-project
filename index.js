@@ -5,6 +5,7 @@ const path=require("path");
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
+app.use(express.static(path.join(__dirname,"public")));
 //to start mysql in terminal
 //& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
 const methodOverride=require("method-override");
@@ -15,8 +16,8 @@ app.use(express.urlencoded({extended:true}));
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'myFirm',
-    password:"sans"
+    database: 'nsut',
+    password:"Divanshij@06"
   });
 app.get("/nsut/admin",(req,res)=>{
     res.render("adminLogin.ejs");
