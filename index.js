@@ -16,8 +16,8 @@ app.use(express.urlencoded({extended:true}));
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'myFirm',
-    password:"sans"
+    database: 'nsut',
+    password:"Divanshij@06"
   });
 app.get("/nsut/admin",(req,res)=>{
     res.render("adminLogin.ejs");
