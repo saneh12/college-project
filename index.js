@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'hostel',
-    password:"saneh@0310"
+    password:""
   });
 app.get("/nsut/admin",(req,res)=>{
     res.render("adminLogin.ejs");
@@ -71,12 +71,11 @@ app.get("/",(req,res)=>{
 app.get("/nsut/admin/show/edit/:id",(req,res)=>{
     let {id} = req.params;
     console.log(id);
-    let post = posts.find((p) => id===p.id);
-    res.render("edit.ejs",{post});
+    
 });
 app.delete("/nsut/admin/show/edit/:id",(req,res)=>{
     let {id} = req.params;
-    posts = posts.filter((p)=>id!==p.id);
+    
     res.redirect("/nsut/admin/show/student");
 })
 app.listen("8080",(req,res)=>{
