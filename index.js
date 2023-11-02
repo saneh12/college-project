@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'nsut',
-    password:"meda11102004"
+    password:"Divanshij@06"
   });
 app.get("/nsut/admin",(req,res)=>{
     res.render("adminLogin.ejs");
