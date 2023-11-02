@@ -1,103 +1,94 @@
--- MySQL Workbench Forward Engineering
+CREATE DATABASE IF NOT EXISTS NSUT;
+ DROP DATABASE NSUT;
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+USE NSUT;
+ CREATE TABLE IF NOT EXISTS STUDENT(
+  studentid VARCHAR(10) UNIQUE NOT NULL,
+  firstname VARCHAR(50) NOT NULL,
+  lastname VARCHAR(50) NOT NULL,
+  gender ENUM('M','F') NOT NULL,
+  email VARCHAR(70) NOT NULL CHECK(email LIKE '%@nsut.ac.in'),
+  address VARCHAR(80) NOT NULL,
+  PRIMARY KEY(studentid)
+);
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema hostel_management
--- -----------------------------------------------------
+CREATE TABLE R1(
+  studentid VARCHAR(10) NOT NULL,
+  contactno BIGINT NOT NULL,
+  PRIMARY KEY (studentid,contactno),
+  FOREIGN KEY (studentid) REFERENCES STUDENT(studentid)
+);
 
--- -----------------------------------------------------
--- Schema hostel_management
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `hostel_management` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `hostel_management` ;
+CREATE TABLE STAFF(
+  staffid VARCHAR(10) UNIQUE NOT NULL ,
+  name VARCHAR(50) NOT NULL,
+  position ENUM("Warden","Janitor","Security") NOT NULL
+);
+CREATE TABLE R2(
+  staffid VARCHAR(10) NOT NULL,
+  email VARCHAR(20) NOT NULL,
+  PRIMARY KEY(staffid,email),
+  FOREIGN KEY(staffid) REFERENCES STAFF(staffid)
+);
 
--- -----------------------------------------------------
--- Table `hostel_management`.`student`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hostel_management`.`student` (
-  `StudentID` INT NOT NULL,
-  `Name` VARCHAR(60) NOT NULL,
-  `Gender` VARCHAR(1) NOT NULL,
-  `Contact_no` FLOAT NULL DEFAULT NULL,
-  `Email` VARCHAR(45) NULL DEFAULT NULL,
-  `Address` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`StudentID`),
-  UNIQUE INDEX `StudentID_UNIQUE` (`StudentID` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+CREATE TABLE R3(
+  staffid VARCHAR(10) NOT NULL,
+  contact_number BIGINT NOT NULL,
+  PRIMARY KEY(staffid,contact_number),
+  FOREIGN KEY(staffid) REFERENCES STAFF(staffid)
+);
 
+CREATE TABLE HOSTEL (
+  hostelid VARCHAR(10) NOT NULL UNIQUE,
+  hostelname VARCHAR(20) NOT NULL UNIQUE,
+  no_of_rooms INTEGER NOT NULL,
+  wardenid VARCHAR(10) UNIQUE NOT NULL,
+  PRIMARY KEY(hostelid),
+  FOREIGN KEY(wardenid) REFERENCES STAFF(staffid)
+);
 
--- -----------------------------------------------------
--- Table `hostel_management`.`fees`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hostel_management`.`fees` (
-  `PaymentID` INT NOT NULL,
-  `StudentID` INT NOT NULL,
-  `PaymentDate` DATE NULL DEFAULT NULL,
-  `Amount` INT NOT NULL,
-  `Status` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`PaymentID`),
-  UNIQUE INDEX `PaymentID_UNIQUE` (`PaymentID` ASC) VISIBLE,
-  INDEX `StudentID_idx` (`StudentID` ASC) VISIBLE,
-  CONSTRAINT `StudentID`
-    FOREIGN KEY (`StudentID`)
-    REFERENCES `hostel_management`.`student` (`StudentID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `hostel_management`.`hostel`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hostel_management`.`hostel` (
-  `HostelID` INT NOT NULL,
-  `HostelName` VARCHAR(100) NOT NULL,
-  `No_of_Rooms` INT NOT NULL,
-  `WardenID` INT NOT NULL,
-  PRIMARY KEY (`HostelID`),
-  UNIQUE INDEX `HostelID_UNIQUE` (`HostelID` ASC) VISIBLE,
-  UNIQUE INDEX `HostelName_UNIQUE` (`HostelName` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+CREATE TABLE ROOMS(
+   room_no VARCHAR(10) UNIQUE NOT NULL,
+   ac_nonac VARCHAR(8) NOT NULL,
+   capacity INT NOT NULL,
+   occupancy_status ENUM("occupied" , "vacant") NOT NULL,
+   PRIMARY KEY(room_no)
+);
 
 
--- -----------------------------------------------------
--- Table `hostel_management`.`room`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hostel_management`.`room` (
-  `RoomNo` INT NOT NULL,
-  `AC/NonAC` VARCHAR(45) NOT NULL,
-  `Capacity` INT NOT NULL,
-  `OccupancyStatus` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`RoomNo`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
+CREATE TABLE ROOM_ALLOCATION(
+   studentid VARCHAR(10) NOT NULL UNIQUE,
+   room_no VARCHAR(10) NOT NULL ,
+   PRIMARY KEY(studentid),
+   FOREIGN KEY(studentid) REFERENCES STUDENT(studentid),
+   FOREIGN KEY(room_no) REFERENCES ROOMS(room_no)
+   
+);
+CREATE TABLE FEES(
+   paymentid VARCHAR(10) UNIQUE NOT NULL,
+   studentid VARCHAR(10) NOT NULL,
+   payment_date DATE NOT NULL,
+   amount INTEGER NOT NULL,
+   status ENUM("paid" , "pending") NOT NULL,
+   PRIMARY KEY(paymentid) ,
+   FOREIGN KEY(studentid) REFERENCES STUDENT(studentid)
+);
+CREATE TABLE COMPLAINTS(
+   complaintid VARCHAR(10) UNIQUE NOT NULL,
+   studentid VARCHAR(10) NOT NULL,
+   description VARCHAR(100) NOT NULL,
+   date DATE NOT NULL,
+   status ENUM("open","resolved") NOT NULL,
+   PRIMARY KEY(complaintid),
+   FOREIGN KEY(studentid) REFERENCES STUDENT(studentid)
+);
 
--- -----------------------------------------------------
--- Table `hostel_management`.`staff`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hostel_management`.`staff` (
-  `StaffID` INT NOT NULL,
-  `Name` VARCHAR(60) NOT NULL,
-  `Position` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`StaffID`),
-  UNIQUE INDEX `StaffID_UNIQUE` (`StaffID` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+CREATE TABLE VISITOR(
+   visitorid VARCHAR(10) NOT NULL ,
+   studentid VARCHAR(10) NOT NULL ,
+   visitor_name VARCHAR(50) NOT NULL,
+   visit_date DATE NOT NULL,
+   PRIMARY KEY(visitorid , studentid),
+   FOREIGN KEY(studentid) REFERENCES STUDENT(studentid)
+);
