@@ -1,18 +1,23 @@
 {
-  "name": "dbmsproject",
+  "name": "expresstut",
   "version": "1.0.0",
-  "description": "",
+  "description": "The objective of this project is to design and develop a comprehensive Hostel Management System which involves the feasible organisation and supervision of activities seen in a typical hostel.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Maithri",
   "license": "ISC",
   "dependencies": {
+    "boxicons": "^2.1.4",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "method-override": "^3.0.0",
     "mysql2": "^3.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Hostel-Management-System"
   }
 }

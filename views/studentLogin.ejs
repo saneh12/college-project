@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Login</title>
+    <link rel="stylesheet" href="/studentlogin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <h1>Welcome Student</h1>
-    <h3>plz enter ur details to login</h3>
-    <form method="post" action="/nsut/student/show">
-        <input name="username" type="text" placeholder="Enter ur username">
-        <input name="password" type="password" placeholder="enter ur password">
-        <button>Login</button> 
-    </form>
+    <div class="entire">
+        <form method="post" action="/nsut/student/show">
+            <h1>Welcome Student!</h1><br>
+            <h3>Please enter your details to login:</h3>
+            <div class="input-box">
+                <input name="username" type="text" placeholder="Enter your username">
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input name="password" type="password" placeholder="Enter your password">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <button type="submit" class="btn">Login</button> 
+        </form>
+    </div>
 </body>
 </html>
