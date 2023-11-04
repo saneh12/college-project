@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit staff details</title>
+</head>
+<body>
+    <h1>Edit staff details</h1>
+    <form method="post" action="/staff/edit/<%=stf.staffid%>?_method=PATCH">
+        <input type="text" name="staffid" value=<%=stf.staffid%>>
+        <input type="text" name="name" value=<%=stf.name%>>
+        <input type="text" name="position" value=<%=stf.position%>>
+        <button>Edit</button>
+    </form>
+</body>
+</html>
