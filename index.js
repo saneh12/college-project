@@ -220,8 +220,7 @@ console.log("SQL Query:", q);
     console.log("student details showing");
 });
 app.post("/nsut/staff/show",(req,res)=>{
-    //let {username,password}=req.body;
-    let password='2022UCD121';
+    let {username,password}=req.body;
     console.log(username);
     console.log(password);
     let q=`select * from staff where staffid=${password}`;
