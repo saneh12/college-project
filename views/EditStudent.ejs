@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student details</title>
+</head>
+<body>
+    <h1>Edit student details</h1>
+    <form method="post" action="/student/edit/<%=std.studentid%>?_method=PATCH">
+        <input type="text" name="studentid" value=<%=std.studentid%>>
+        <input type="text" name="firstname" value=<%=std.firstname%>>
+        <input type="text" name="lastname" value=<%=std.lastname%>>
+        <input type="text" name="gender" value=<%=std.gender%>>
+        <input type="text" name="email" value=<%=std.email%>>
+        <input type="text" name="address" value=<%=std.address%>>
+        <button>Edit</button>
+    </form>
+</body>
+</html>
