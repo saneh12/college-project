@@ -76,9 +76,10 @@ catch(err){
 })
 
 app.post("/nsut/admin/add/student",(req,res)=>{
-    let {rollno,fname,lname,gender,email,address}=req.body;
-    let std=[rollno,fname,lname,gender,email,address];
-    let q=`insert into student (studentid,firstname,lastname,gender,email,address) values (?,?,?,?,?,?)`;
+    let {rollno,fname,lname,gender,email,address,phone}=req.body;
+    let std=[rollno,fname,lname,gender,email,address,rollno,phone];
+    let q=`insert into student (studentid,firstname,lastname,gender,email,address) values (?,?,?,?,?,?);
+    insert into r1 (studentid,contactno) values (?,?);`;
     try{
         connection.query(
             q,std,
@@ -109,6 +110,46 @@ app.post("/nsut/admin/add/staff",(req,res)=>{
     }catch(err){
         res.send(err);
         console.log(err);
+    }
+})
+app.post("/std/contact/:id",(req,res)=>{
+    let {id}=req.params;
+    let {contact}=req.body;
+    contact=parseInt(contact, 10);
+    console.log(typeof(contact));
+    console.log(contact);
+    let cont=[id,contact];
+    let q=`INSERT INTO r1 (studentid,contactno) VALUES (?,?);`;
+    try{
+        connection.query(
+            q,cont,
+            (err,result)=>{
+                console.log(result);
+                res.send("contact added successfully");
+            }
+        )
+    }catch(err){
+        console.log(err);
+        res.send(err);
+    }
+})
+app.post("/stf/contact/:id",(req,res)=>{
+    let {id}=req.params;
+    let {email,phone}=req.body;
+    let cont=[id,email,id,phone];
+    let q=`INSERT INTO r2 (staffid,email) VALUES (?,?);
+    INSERT INTO r3 (staffid,contact_number) VALUES (?,?)`;
+    try{
+        connection.query(
+            q,cont,
+            (err,result)=>{
+                console.log(result);
+                res.send("contact added successfully");
+            }
+        )
+    }catch(err){
+        console.log(err);
+        res.send(err);
     }
 })
 
