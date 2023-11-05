@@ -20,7 +20,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'NSUT1',
-    password:"sans",
+    password:"meda11102004",
     multipleStatements: true,
   });
 app.get("/student/add",(req,res)=>{
