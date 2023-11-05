@@ -6,8 +6,8 @@ h1{
     padding-top: 80px;
 }
 body{
-    height: 100vh;
-    width: 100%;
+    justify-content: center;
+    min-height: 100vh;
     background-image: url("https://media.licdn.cn/dms/image/C4E1BAQGp5SgdttB4BA/company-background_10000/0/1613746044590?e=2159024400&v=beta&t=V1u-kYnanBl-I-XaF5NYC1yePvoR0bKQOQ5mgaIPJTQ");
     background-repeat: no-repeat;
     background-size: cover;

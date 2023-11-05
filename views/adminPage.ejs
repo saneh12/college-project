@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin's Page</title>
-    <style>
-        body{
-            text-align: center;
-        }
-        table{
-            margin:auto;
-        }
-    </style>
+    <link rel="stylesheet" href="/adminpage.css">
 </head>
 <body>
-    <h1>Welcome authorized admin</h1>
-    <h3>What do u plan to do today?</h3>
-    <p>You have special access to all staff and student details</p><hr>
+    <h1>Welcome Authorized Admin</h1><br><br>
+    <h3>What do you plan to do today?</h3>
+    <p>You have special access to all staff and student details!</p><hr>
+    <br><br>
     <hr>
     <h2>List of University Students</h2><hr>
     <table border="black">
@@ -51,7 +45,10 @@
         </tr>
         <%}%>
     </table>
-    <br><br><a href="http://localhost:8080/student/add">Add a new student</a><br><br>
+    <br><br>
+    <div class="link">
+        <a href="http://localhost:8080/student/add">Add a new student</a><br><br>
+    </div>
     <hr>
     <h2>List of University student contact details</h2><hr>
     <table border="black">
@@ -94,7 +91,10 @@
         </tr>
         <%}%>
     </table>
-    <br><br><a href="http://localhost:8080/staff/add">Add a new staff</a><br><br>
+    <br><br>
+    <div class="link">
+        <a href="http://localhost:8080/staff/add">Add a new staff</a><br><br>
+    </div>
     <hr>
     <h2>List of University staff contact details</h2><hr>
     <table border="black">

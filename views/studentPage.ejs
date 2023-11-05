@@ -4,33 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student's Page</title>
-    <style>
-        body{
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="/studentpage.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 <body>
-    <h1>Welcome authorized student</h1>
-    <img src="https://as2.ftcdn.net/v2/jpg/02/19/98/93/1000_F_219989372_K1pBzmbiGfoMd6X5JJd5SYOVIBzSUN8f.jpg"
-    height="100px" width="100px" alt="user"><hr>
-    <h3>What do u plan to do today?Here are your details: </h3>
-    <p>University RollNo: <%=data.stdR1[0].studentid%></p>
-    <p>First Name: <%=data.stdR1[0].firstname%></p>
-    <p>Last Name: <%=data.stdR1[0].lastname%></p>
-    <p>Gender: <%=data.stdR1[0].gender%></p>
-    <p>University EmailId: <%=data.stdR1[0].email%></p>
-    <p>Address: <%=data.stdR1[0].address%></p>
-    Contact Number:
-    <%for(let x of data.stdR1){%>
-        <%=x.contactno%> |
-    <%}%>
-    <br><br><br>
-    <a href="http://localhost:8080/nsut/student">Logout</a><br><br>
-    <h2>Add a new contact number</h2>
-    <form method="post" action="/std/contact/<%=data.stdR1[0].studentid%>">
-        +91&nbsp;<input type="text" name="contact" placeholder="Write your 10 digit number here">
-        <button>Submit</button>
-    </form>
+    <div class="entire">
+        <h1>Welcome Authorized Student</h1>
+        <div class="cool">
+            <box-icon type='solid' name='face'size='70px'></box-icon> <br>
+        </div>
+        <h3>What do you plan to do today? <br>
+            Here are your details: </h3>
+        <div class="input-box">
+            <div class="stuff">
+                <p>University RollNo: <%=data.stdR1[0].studentid%></p>
+                <p>First Name: <%=data.stdR1[0].firstname%></p>
+                <p>Last Name: <%=data.stdR1[0].lastname%></p>
+                <p>Gender: <%=data.stdR1[0].gender%></p>
+                <p>University EmailId: <%=data.stdR1[0].email%></p>
+                <p>Address: <%=data.stdR1[0].address%></p>
+                <p>Contact Number:
+                <%for(let x of data.stdR1){%>
+                    <%=x.contactno%>
+                <%}%></p>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="link">
+            <a href="http://localhost:8080/nsut/student">Logout</a><br><br>
+        </div>
+        <form method="post" action="/std/contact/<%=data.stdR1[0].studentid%>">
+            <h2>Add a new contact number</h2>
+            <div class="data">
+                +91&nbsp;<input type="text" name="contact" placeholder="10 digit number here">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    
 </body>
 </html>
