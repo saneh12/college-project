@@ -4,17 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin's Page</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            margin:auto;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome authorized admin</h1>
     <h3>What do u plan to do today?</h3>
-    <p>staff details</p>
-    <p>student details</p>
-    <p>Add a newc student</p>
-    <form action="/nsut/staff/edit" method="patch">
-        <input type="text" placeholder="enter id" name="stdId">
-        <input type="text" placeholder="enter name" name="name">
-        <button>Edit</button>
-    </form>
+    <p>You have special access to all staff and student details</p><hr>
+    <hr>
+    <h2>List of University Students</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>Student University RollNo: </b></th>
+            <th><b>Student First Name: </b></th>
+            <th><b>Student last Name: </b></th>
+            <th><b>Student gender: </b></th>
+            <th><b>Student email: </b></th>
+            <th><b>Student address: </b></th>
+            <th><b>Delete</b></th>
+            <th><b>Edit</b></th>
+        </tr>
+        <%for(let std of data.student){%>
+        <tr>
+                <td><%=std.studentid%></td>
+                <td><%=std.firstname%></td>
+                <td><%=std.lastname%></td>
+                <td><%=std.gender%></td>
+                <td><%=std.email%></td>
+                <td><%=std.address%></td>
+                <td>
+                    <form method="post" action="/nsut/admin/stdDel/<%=std.studentid%>?_method=DELETE">
+                        <button>Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/nsut/admin/stdEdit/<%=std.studentid%>?">
+                        <button>Edit</button>
+                    </form>
+                </td>
+        </tr>
+        <%}%>
+    </table>
+    <br><br><a href="http://localhost:8080/student/add">Add a new student</a><br><br>
+    <hr>
+    <h2>List of University student contact details</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>Studentid: </b></th>
+            <th><b>Contactno: </b></th>
+        </tr>
+        <%for(let st of data.r1){%>
+        <tr>
+                <td><%=st.studentid%></td>
+                <td><%=st.contactno%></td>
+        </tr>
+        <%}%>
+    </table>
+    <hr>
+    <h2>List of University staff</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>StaffId: </b></th>
+            <th><b>Staff Name: </b></th>
+            <th><b>Staff Position: </b></th>
+            <th><b>Delete</b></th>
+            <th><b>Edit</b></th>
+        </tr>
+        <%for(let st of data.staff){%>
+        <tr>
+                <td><%=st.staffid%></td>
+                <td><%=st.name%></td>
+                <td><%=st.position%></td>
+                <td>
+                    <form method="post" action="/nsut/admin/stfDel/<%=st.staffid%>?_method=DELETE">
+                        <button>Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/nsut/admin/stfEdit/<%=st.staffid%>">
+                        <button>Edit</button>
+                    </form>
+                </td>
+        </tr>
+        <%}%>
+    </table>
+    <br><br><a href="http://localhost:8080/staff/add">Add a new staff</a><br><br>
+    <hr>
+    <h2>List of University staff contact details</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>StaffId: </b></th>
+            <th><b>Email: </b></th>
+        </tr>
+        <%for(let st of data.r2){%>
+        <tr>
+                <td><%=st.staffid%></td>
+                <td><%=st.email%></td>
+        </tr>
+        <%}%>
+    </table>
+    <hr>
+    <h2>List of University staff contact details</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>StaffId: </b></th>
+            <th><b>contact no: </b></th>
+        </tr>
+        <%for(let st of data.r3){%>
+        <tr>
+                <td><%=st.staffid%></td>
+                <td><%=st.contact_number%></td>
+        </tr>
+        <%}%>
+    </table>
+    <hr>
+    <h2>List of University Hostels</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>hostelid: </b></th>
+            <th><b>hostelname: </b></th>
+            <th><b>No of Rooms: </b></th>
+            <th><b>Id of Warden of hostel: </b></th>
+        </tr>
+        <%for(let h of data.hostel){%>
+        <tr>
+                <td><%=h.hostelid%></td>
+                <td><%=h.hostelname%></td>
+                <td><%=h.no_of_rooms%></td>
+                <td><%=h.wardenid%></td>
+        </tr>
+        <%}%>
+    </table>
+    <hr>
+    <h2>List of Hostel Rooms</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>HostelNumber-RollNumber: </b></th>
+            <th><b>AC/NonAc: </b></th>
+            <th><b>Capacity: </b></th>
+            <th><b>Occupancy_status: </b></th>
+        </tr>
+        <%for(let h of data.rooms){%>
+        <tr>
+                <td><%=h.room_no%></td>
+                <td><%=h.ac_nonac%></td>
+                <td><%=h.capacity%></td>
+                <td><%=h.occupancy_status%></td>
+        </tr>
+        <%}%>
+    </table>
+    <hr>
+    <h2>List of Visitors in Hostels</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>Visitor Id: </b></th>
+            <th><b>Student Id: </b></th>
+            <th><b>Visitor Name: </b></th>
+            <th><b>Visitor Date </b></th>
+        </tr>
+        <%for(let v of data.visitor){%>
+        <tr>
+                <td><%=v.visitorid%></td>
+                <td><%=v.studentid%></td>
+                <td><%=v.visitor_name%></td>
+                <td><%=v.visit_date%></td>
+        </tr>
+        <%}%>
+    </table>
+    <hr>
+    <h2>List of Payment Status of Hostellers</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>Payment Id: </b></th>
+            <th><b>Student Id: </b></th>
+            <th><b>Payment Date: </b></th>
+            <th><b>Amount Paid: </b></th>
+            <th><b>Fee Status: </b></th>
+        </tr>
+        <%for(let f of data.fees){%>
+        <tr>
+                <td><%=f.paymentid%></td>
+                <td><%=f.studentid%></td>
+                <td><%=f.payment_date%></td>
+                <td><%=f.amount%></td>
+                <td><%=f.status%></td>
+        </tr>
+        <%}%>
+    </table><hr>
+    <a href="http://localhost:8080/nsut/student">Logout</a>
 </body>
 </html>
+

@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff's page</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome authorized staff</h1>
+    <img src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+    height="100px" width="100px" alt="user"><hr>
     <h3>What do u plan to do today?</h3>
+    <p><b>Identification No(Also Password for login): </b><%=staff.staffid%></p>
+    <p><b>Name(Also username): </b><%=staff.name%></p>
+    <p><b>Post: </b><%=staff.pos%></p><hr>
+    <a href="http://localhost:8080/nsut/staff">Logout</a><br><br>
+    <h2>Please add your contact details if not done yet</h2>
+    <form method="post" action="/stf/contact/<%=staff.staffid%>">
+        Email id&nbsp;<input type="text" placeholder="Email" name="email">
+        Phone no&nbsp;<input type="text" placeholder="Ph no" name="phone">
+        <button>Submit</button>
+    </form>
 </body>
 </html>
