@@ -84,4 +84,12 @@ CREATE TABLE COMPLAINTS(
    PRIMARY KEY(complaintid),
    FOREIGN KEY(studentid) REFERENCES STUDENT(studentid)
 );
+CREATE TABLE VISITOR(
+   visitorid VARCHAR(10) NOT NULL ,
+   studentid VARCHAR(10) NOT NULL ,
+   visitor_name VARCHAR(50) NOT NULL,
+   visit_date DATE NOT NULL,
+   PRIMARY KEY(visitorid , studentid),
+   FOREIGN KEY(studentid) REFERENCES STUDENT(studentid)
+);
 
