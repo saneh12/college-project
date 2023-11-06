@@ -43,7 +43,7 @@ CREATE TABLE HOSTEL (
   hostelid VARCHAR(10) NOT NULL UNIQUE,
   hostelname VARCHAR(20) NOT NULL UNIQUE,
   no_of_rooms INTEGER NOT NULL,
-  wardenid VARCHAR(10) UNIQUE NOT NULL,
+  wardenid VARCHAR(10) UNIQUE,
   PRIMARY KEY(hostelid),
   FOREIGN KEY(wardenid) REFERENCES STAFF(staffid)
 );
