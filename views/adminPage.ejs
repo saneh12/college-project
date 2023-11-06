@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin's Page</title>
-    <link rel="stylesheet" href="/adminpage.css">
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            margin:auto;
+        }
+        a{
+            font-size:1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome Authorized Admin</h1><br><br>
-    <h3>What do you plan to do today?</h3>
-    <p>You have special access to all staff and student details!</p><hr>
-    <br><br>
+    <h1>Welcome authorized admin</h1>
+    <h3>What do u plan to do today?</h3>
+    <p>You have special access to all staff and student details</p><hr>
     <hr>
     <h2>List of University Students</h2><hr>
     <table border="black">
@@ -45,10 +54,7 @@
         </tr>
         <%}%>
     </table>
-    <br><br>
-    <div class="link">
-        <a href="http://localhost:8080/student/add">Add a new student</a><br><br>
-    </div>
+    <br><br><a href="http://localhost:8080/student/add">Add a new student</a><br><br>
     <hr>
     <h2>List of University student contact details</h2><hr>
     <table border="black">
@@ -91,10 +97,7 @@
         </tr>
         <%}%>
     </table>
-    <br><br>
-    <div class="link">
-        <a href="http://localhost:8080/staff/add">Add a new staff</a><br><br>
-    </div>
+    <br><br><a href="http://localhost:8080/staff/add">Add a new staff</a><br><br>
     <hr>
     <h2>List of University staff contact details</h2><hr>
     <table border="black">
@@ -197,7 +200,26 @@
         </tr>
         <%}%>
     </table><hr>
-    <a href="http://localhost:8080/nsut/student">Logout</a>
+    <h2>List of Complaints of Hostellers</h2><hr>
+    <table border="black">
+        <tr>
+            <th><b>Complaint Id: </b></th>
+            <th><b>Student Id: </b></th>
+            <th><b>description: </b></th>
+            <th><b>date: </b></th>
+            <th><b>Status: </b></th>
+        </tr>
+        <%for(let f of data.complaints){%>
+        <tr>
+                <td><%=f.complaintid%></td>
+                <td><%=f.studentid%></td>
+                <td><%=f.description%></td>
+                <td><%=f.date%></td>
+                <td><%=f.status%></td>
+        </tr>
+        <%}%>
+    </table><hr>
+    <a href="http://localhost:8080/nsut/student">Logout</a><br><br><br><br>
 </body>
 </html>
 
