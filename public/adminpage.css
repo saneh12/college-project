@@ -1,0 +1,50 @@
+table{
+    margin:auto;
+    background-color: burlywood;
+    text-align: center;
+    text-wrap: nowrap;
+}
+*{
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+body{
+    min-height: 100vh;
+    background: url("https://static.nycgovparks.org/images/parks/B087/images/featured/24918.jpg");
+    background-size: cover;
+    background-position: center;
+} 
+h1{
+    text-align: center;
+    color: rgb(82, 24, 24);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 3%;
+}
+h3, p{
+    text-align: center;
+}
+h2{
+    text-align: center;
+    background-color: beige;
+    margin-bottom: 1%;
+    
+}
+.link{
+    text-align: center;
+    width: 20%;
+    height: 24px;
+    background: #fdf81e;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 19px;
+    color: black;
+    font-weight: 600;
+    margin-left: 41%;
+    margin-bottom: 3%;
+
+}

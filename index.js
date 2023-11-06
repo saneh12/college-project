@@ -192,12 +192,18 @@ app.patch("/student/edit/:id",(req,res)=>{
 
 app.delete("/nsut/admin/stdDel/:id",(req,res)=>{
     let {id}=req.params;
-    let q=`DELETE FROM student WHERE studentid='${id}'`;
+    let q=`DELETE FROM r1 WHERE studentid='${id}';
+    DELETE FROM room_allocation WHERE studentid='${id}';
+    DELETE FROM fees WHERE studentid='${id}';
+    DELETE FROM complaints WHERE studentid='${id}';
+    DELETE FROM visitor WHERE studentid='${id}';
+    DELETE FROM student WHERE studentid='${id}';
+    `;
     try{
         connection.query(
-            q,(err,result)=>{
+            q,(err,results)=>{
                 if(err) throw err;
-                console.log(result);
+                console.log(results[0],results[1]);
                 res.send("student deleted");
             }
         )
@@ -208,7 +214,10 @@ app.delete("/nsut/admin/stdDel/:id",(req,res)=>{
 })
 app.delete("/nsut/admin/stfDel/:id",(req,res)=>{
     let {id}=req.params;
-    let q=`DELETE FROM staff WHERE staffid='${id}'`;
+    let q=`DELETE FROM R3 WHERE staffid='${id}';
+    DELETE FROM R2 WHERE staffid='${id}';
+    UPDATE HOSTEL SET wardenid = NULL WHERE wardenid = '${id}';
+    DELETE FROM STAFF WHERE staffid='${id}';`;
     try{
         connection.query(
             q,(err,result)=>{
@@ -223,6 +232,24 @@ app.delete("/nsut/admin/stfDel/:id",(req,res)=>{
     }
 })
 
+app.post("/std/complaint/:id",(req,res)=>{
+    let {id}=req.params;
+    let {desc}=req.body;
+    let q=`insert into complaints values (?,?,?,?,?);`;
+    console.log(q);
+    let dt=new Date();
+    let complaint=["C6",id,desc,dt,"open"];
+    try{connection.query(
+        q,complaint,
+        (err,result)=>{
+            console.log(result);
+            res.send("complaint added");
+        }
+    )}catch(err){
+        console.log(err);
+        res.send(err);
+    }
+})
 app.post("/nsut/student/show",(req,res)=>{
     
     let {username,password}=req.body;

@@ -4,26 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff's page</title>
-    <style>
-        body{
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="/staffpage.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 <body>
-    <h1>Welcome authorized staff</h1>
-    <img src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
-    height="100px" width="100px" alt="user"><hr>
-    <h3>What do u plan to do today?</h3>
-    <p><b>Identification No(Also Password for login): </b><%=staff.staffid%></p>
-    <p><b>Name(Also username): </b><%=staff.name%></p>
-    <p><b>Post: </b><%=staff.pos%></p><hr>
-    <a href="http://localhost:8080/nsut/staff">Logout</a><br><br>
-    <h2>Please add your contact details if not done yet</h2>
-    <form method="post" action="/stf/contact/<%=staff.staffid%>">
-        Email id&nbsp;<input type="text" placeholder="Email" name="email">
-        Phone no&nbsp;<input type="text" placeholder="Ph no" name="phone">
-        <button>Submit</button>
-    </form>
+    <div class="entire">
+        <h1>Welcome Authorized Staff</h1><hr>
+        <div class="cool">
+            <box-icon type='solid' name='user-rectangle' size="70px"></box-icon><br>
+        </div>
+        <div class="input-box">
+            <div class="stuff">
+                <p><b>Identification No(Also Password for login): </b><%=staff.staffid%></p>
+                <p><b>Name(Also username): </b><%=staff.name%></p>
+                <p><b>Post: </b><%=staff.pos%></p>
+            </div>
+        </div>
+        <br>
+        <h3>What do you plan to do today?</h3><br><br>
+        <div class="link">
+            <a href="http://localhost:8080/nsut/staff">Logout</a><br><br>
+        </div>
+        <form method="post" action="/stf/contact/<%=staff.staffid%>" class="login-form">
+            <h2>Please add your contact details, if not done yet: </h2>
+            <div class="data">
+                Email id:&nbsp;<input type="email" name="email" required/>
+            </div>
+            <div class="data">
+                Phone No:&nbsp; <input type="text" name="phoneno" required/>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
 </body>
 </html>

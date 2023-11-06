@@ -1,0 +1,88 @@
+*{
+    margin: 6px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+body{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background: url("https://img.freepik.com/premium-photo/abstract-blur-library-blurred-book-shelves-hall-generative-ai_791316-6098.jpg");
+    background-size: cover;
+    background-position: center;
+}
+h1{
+    text-align: center;
+    color: rgb(82, 24, 24);
+}
+.entire{
+    width: 995px;
+    height: 735px;
+    background-color: rgb(144 190 193);
+    padding: 24px 70px;
+    margin: 3%;
+}
+h3{
+    text-align: center;
+    color: rgb(82, 24, 24);
+}
+.stuff{
+    border-style: solid;
+    border-width: 2px;
+    margin: 4%;
+    padding: 2%;
+    width: 477px;
+    margin-left: 27%;
+}
+.entire .cool {
+    height: 83px;
+    width: 0%;
+    margin: 6px 390px;
+}
+.entire .input-box {
+    height: 82px;
+    width: 0%;
+    margin: -1px 212px;
+}
+.data{
+    width: 37%;
+    height: 309%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(269, 255, 255, 0.2);
+    border-radius: 9px;
+    font-size: 16;
+    padding: 24px -493px -83px 49px;
+}
+form .btn {
+    width: 12%;
+    height: 32px;
+    background: #748faf;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+    margin-left: 12%;
+}
+.entire .link{
+    width: 10%;
+    height: 26px;
+    background: #748faf;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 19px;
+    color: black;
+    font-weight: 600;
+    margin-left: 48%;
+    margin-top: 9%;
+}

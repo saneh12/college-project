@@ -1,5 +1,6 @@
+DROP DATABASE NSUT;
 CREATE DATABASE IF NOT EXISTS NSUT;
- DROP DATABASE NSUT;
+ 
 
 USE NSUT;
  CREATE TABLE IF NOT EXISTS STUDENT(
@@ -14,7 +15,7 @@ USE NSUT;
 
 CREATE TABLE R1(
   studentid VARCHAR(10) NOT NULL,
-  contactno BIGINT NOT NULL,
+  contactno BIGINT NOT NULL CHECK(contactno LIKE '__________'),
   PRIMARY KEY (studentid,contactno),
   FOREIGN KEY (studentid) REFERENCES STUDENT(studentid)
 );
@@ -33,7 +34,7 @@ CREATE TABLE R2(
 
 CREATE TABLE R3(
   staffid VARCHAR(10) NOT NULL,
-  contact_number BIGINT NOT NULL,
+  contact_number BIGINT NOT NULL CHECK(contact_number LIKE '__________'),
   PRIMARY KEY(staffid,contact_number),
   FOREIGN KEY(staffid) REFERENCES STAFF(staffid)
 );
@@ -42,7 +43,7 @@ CREATE TABLE HOSTEL (
   hostelid VARCHAR(10) NOT NULL UNIQUE,
   hostelname VARCHAR(20) NOT NULL UNIQUE,
   no_of_rooms INTEGER NOT NULL,
-  wardenid VARCHAR(10) UNIQUE NOT NULL,
+  wardenid VARCHAR(10) UNIQUE,
   PRIMARY KEY(hostelid),
   FOREIGN KEY(wardenid) REFERENCES STAFF(staffid)
 );
@@ -83,7 +84,6 @@ CREATE TABLE COMPLAINTS(
    PRIMARY KEY(complaintid),
    FOREIGN KEY(studentid) REFERENCES STUDENT(studentid)
 );
-
 CREATE TABLE VISITOR(
    visitorid VARCHAR(10) NOT NULL ,
    studentid VARCHAR(10) NOT NULL ,
@@ -92,3 +92,4 @@ CREATE TABLE VISITOR(
    PRIMARY KEY(visitorid , studentid),
    FOREIGN KEY(studentid) REFERENCES STUDENT(studentid)
 );
+
