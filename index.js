@@ -214,7 +214,10 @@ app.delete("/nsut/admin/stdDel/:id",(req,res)=>{
 })
 app.delete("/nsut/admin/stfDel/:id",(req,res)=>{
     let {id}=req.params;
-    let q=`DELETE FROM staff WHERE staffid='${id}'`;
+    let q=`DELETE FROM R3 WHERE staffid='${id}';
+    DELETE FROM R2 WHERE staffid='${id}';
+    UPDATE HOSTEL SET wardenid = NULL WHERE wardenid = '${id}';
+    DELETE FROM STAFF WHERE staffid='${id}';`;
     try{
         connection.query(
             q,(err,result)=>{
