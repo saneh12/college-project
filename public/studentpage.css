@@ -19,7 +19,7 @@ h1{
 }
 .entire{
     width: 995px;
-    height: 590px;
+    height: 735px;
     background-color: rgb(144 190 193);
     padding: 24px 70px;
     margin: 3%;
@@ -31,9 +31,10 @@ h3{
 .stuff{
     border-style: solid;
     border-width: 2px;
-    margin: 69%;
-    padding: 17%;
-    width: 478px;
+    margin: 4%;
+    padding: 2%;
+    width: 477px;
+    margin-left: 27%;
 }
 .entire .cool {
     height: 83px;
