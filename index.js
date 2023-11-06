@@ -19,8 +19,8 @@ app.use(express.urlencoded({extended:true}));
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'NSUT1',
-    password:"sans",
+    database: 'NSUT',
+    password:"meda11102004",
     multipleStatements: true,
   });
 app.get("/student/add",(req,res)=>{
